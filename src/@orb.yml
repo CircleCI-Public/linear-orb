@@ -1,0 +1,9 @@
+version: 2.1
+
+description: >
+  Integrate Linear Releases into your CircleCI pipeline.
+  Automatically tracks which issues ship with each deployment.
+
+display:
+  home_url: https://linear.app/docs/releases
+  source_url: https://github.com/linear/linear-release
