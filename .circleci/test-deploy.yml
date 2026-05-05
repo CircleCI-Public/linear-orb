@@ -25,7 +25,8 @@ jobs:
       - image: cimg/base:current
     steps:
       - checkout
-      - linear/sync
+      - linear/sync:
+          version: "<< pipeline.id >>"
 
 workflows:
   test-deploy:
