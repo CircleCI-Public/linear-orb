@@ -1,9 +1,20 @@
 description: Sync the current deployment to a Linear release pipeline
 
+parameters:
+  version:
+    description: Unique version identifier for this release (e.g. git tag, pipeline ID, semantic version)
+    type: string
+    default: ""
+
 steps:
   - run:
       name: Install linear-release
       command: <<include(scripts/install-linear.sh)>>
   - run:
       name: Linear Release Sync
-      command: ./linear-release sync
+      command: |
+        if [ -n "<< parameters.version >>" ]; then
+          ./linear-release sync --version "<< parameters.version >>"
+        else
+          ./linear-release sync
+        fi
