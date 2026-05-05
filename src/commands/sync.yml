@@ -12,9 +12,6 @@ steps:
       command: <<include(scripts/install-linear.sh)>>
   - run:
       name: Linear Release Sync
-      command: |
-        if [ -n "<< parameters.version >>" ]; then
-          ./linear-release sync --version "<< parameters.version >>"
-        else
-          ./linear-release sync
-        fi
+      environment:
+        VERSION: << parameters.version >>
+      command: <<include(scripts/sync.sh)>>
