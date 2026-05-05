@@ -1,0 +1,18 @@
+description: >
+  Sync your deployment to a Linear release pipeline after deploying.
+usage:
+  version: 2.1
+  orbs:
+    linear: circleci/linear@1.0.0
+  jobs:
+    deploy:
+      docker:
+        - image: cimg/base:current
+      steps:
+        - checkout
+        - run: ./deploy.sh
+        - linear/sync
+  workflows:
+    deploy:
+      jobs:
+        - deploy

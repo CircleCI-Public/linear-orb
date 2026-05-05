@@ -1,0 +1,9 @@
+description: Sync the current deployment to a Linear release pipeline
+
+steps:
+  - run:
+      name: Install linear-release
+      command: <<include(scripts/install-linear.sh)>>
+  - run:
+      name: Linear Release Sync
+      command: ./linear-release sync
